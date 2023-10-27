@@ -9,10 +9,6 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.prompts import SystemMessagePromptTemplate, HumanMessagePromptTemplate, ChatPromptTemplate
 from htmlTemplates import css, bot_template, user_template
-import pathlib
-import shutil
-import pathlib
-import shutil
 import requests
 import io
 from selenium import webdriver
@@ -27,22 +23,6 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide",
 )
-
-STREAMLIT_STATIC_PATH = pathlib.Path(st.__path__[0]) / 'static'
-IMG_PATH = (STREAMLIT_STATIC_PATH / "assets" / "image")
-if not IMG_PATH.is_dir():
-    IMG_PATH.mkdir()
-
-for image_filename in ["crying.gif", 
-                       "glad.gif", 
-                       "neutral.gif", 
-                       "reading.gif", 
-                       "sleeping.gif",
-                       "smiling.gif",
-                       "welcoming.gif"]:
-    image_path = IMG_PATH / image_filename
-    if not image_path.exists():
-        shutil.copy(image_filename, image_path)
 
 
 def get_pdf_text(pdf_docs):
@@ -199,7 +179,7 @@ with row2_col2:
             handle_userinput(user_question)
         gif ="""
                 <div style="display: flex; justify-content: center;">
-                    <img src="assets/image/glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
+                    <img src="./glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
                 </div>
                 """
 
@@ -216,7 +196,7 @@ with row1_col5:
         if pdf_docs and not user_question:
             gif = """
                             <div style="display: flex; justify-content: center;">
-                                <img src="assets/image/welcoming.gif" alt="welcoming.gif" style="width: 500px; height: 500px;">
+                                <img src="./welcoming.gif" alt="welcoming.gif" style="width: 500px; height: 500px;">
                             </div>
                             """
 
@@ -224,7 +204,7 @@ with row1_col5:
             with st.spinner("Behandling..."):
                 gif = """
                         <div style="display: flex; justify-content: center;">
-                            <img src="assets/image/reading.gif" alt="reading.gif" style="width: 500px; height: 500px;">
+                            <img src="./reading.gif" alt="reading.gif" style="width: 500px; height: 500px;">
                         </div>
                         """
 
@@ -246,20 +226,20 @@ with row1_col5:
 
                         gif ="""
                                 <div style="display: flex; justify-content: center;">
-                                    <img src="assets/image/glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
+                                    <img src="./glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
                                 </div>
                                 """
                     except Exception as e:
                         gif = """
                             <div style="display: flex; justify-content: center;">
-                                <img src="assets/image/crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
+                                <img src="./crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
                             </div>
                             """
                         st.error(f"Det oppstod en feil under behandling av PDF-filer: {str(e)}")
                 else:
                     gif = """
                             <div style="display: flex; justify-content: center;">
-                                <img src="assets/image/crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
+                                <img src="./crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
                             </div>
                             """
                     st.warning("Vennligst last opp én eller flere PDF-er før du klikker på Behandle.")
@@ -270,7 +250,7 @@ with row1_col5:
                 with st.spinner("Behandling..."):
                     gif = """
                         <div style="display: flex; justify-content: center;">
-                            <img src="assets/image/reading.gif" alt="reading.gif" style="width: 500px; height: 500px;">
+                            <img src="./reading.gif" alt="reading.gif" style="width: 500px; height: 500px;">
                         </div>
                         """
                     pdf_link = get_pdf_url(url)
@@ -279,7 +259,7 @@ with row1_col5:
                         
                         gif ="""
                                         <div style="display: flex; justify-content: center;">
-                                            <img src="assets/image/glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
+                                            <img src="./glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
                                         </div>
                                         """
                         pdf_text = get_pdf_text_from_url(pdf_link)
@@ -298,14 +278,14 @@ with row1_col5:
 
                                 gif ="""
                                         <div style="display: flex; justify-content: center;">
-                                            <img src="assets/image/glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
+                                            <img src="./glad.gif" alt="glad.gif" style="width: 500px; height: 500px;">
                                         </div>
                                         """
                             except Exception as e:
 
                                 gif = """
                                     <div style="display: flex; justify-content: center;">
-                                        <img src="assets/image/crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
+                                        <img src="./crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
                                     </div>
                                     """
                                 st.error(f"Det oppstod en feil under behandling av PDF-filer: {str(e)}")
@@ -313,21 +293,21 @@ with row1_col5:
 
                             gif = """
                                     <div style="display: flex; justify-content: center;">
-                                        <img src="assets/image/crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
+                                        <img src="./crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
                                     </div>
                                     """
                             st.error("Kunne ikke hente PDF fra nettadressen.")
                     else:
                         gif = """
                                     <div style="display: flex; justify-content: center;">
-                                        <img src="assets/image/crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
+                                        <img src="./crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
                                     </div>
                                     """
                         st.error("PDF-lenke ikke funnet.")
             else:
                 gif = """
                                 <div style="display: flex; justify-content: center;">
-                                    <img src="assets/image/crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
+                                    <img src="./crying.gif" alt="crying.gif" style="width: 500px; height: 500px;">
                                 </div>
                                 """
                 st.warning("Vennligst skriv inn lenken før du klikker på Upload.")
