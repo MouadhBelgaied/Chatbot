@@ -97,7 +97,9 @@ def handle_userinput(user_question):
         st.warning("Please upload a PDF before asking questions.")
     
 def get_pdf_url(url):
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    driver = webdriver.Chrome(options=options)
     try:
         driver.get(url)
         wait = WebDriverWait(driver, 30)
