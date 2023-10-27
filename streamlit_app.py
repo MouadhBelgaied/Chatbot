@@ -102,8 +102,13 @@ def get_pdf_url(url):
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-features=NetworkService")
+    options.add_argument("--window-size=1920x1080")
+    options.add_argument("--disable-features=VizDisplayCompositor")
          
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager(version="118.0.5993.90").install()), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     try:
         driver.get(url)
