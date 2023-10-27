@@ -155,7 +155,7 @@ row2_col1, row2_col2 = st.columns([4,7])
 
 gif = """
         <div style="display: flex; justify-content: center;">
-            <img src="./sleeping.gif" alt="sleeping.gif" style="width: 500px; height: 500px;">
+            <img src="https://github.com/MouadhBelgaied/Chatbot/blob/main/sleeping.gif" alt="sleeping.gif" style="width: 500px; height: 500px;">
         </div>
         """
 
