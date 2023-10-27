@@ -15,6 +15,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 
@@ -97,7 +100,16 @@ def handle_userinput(user_question):
         st.warning("Please upload a PDF before asking questions.")
     
 def get_pdf_url(url):
-    driver = webdriver.Chrome()
+    @st.experimental_singleton
+    def get_driver():
+        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    options = Options()
+    options.add_argument('--disable-gpu')
+    options.add_argument('--headless')
+
+    driver = get_driver()
+
     try:
         driver.get(url)
         wait = WebDriverWait(driver, 30)
