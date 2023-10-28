@@ -101,14 +101,13 @@ def handle_userinput(user_question):
 
 
 def get_pdf_url(url):
-    @st.cache_resource
+    @st.experimental_memo
     def get_driver():
         return webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
         
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
     driver = get_driver()
 
