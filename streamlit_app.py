@@ -266,7 +266,7 @@ with row1_col5:
                             <img src="https://raw.githubusercontent.com/MouadhBelgaied/Chatbot/main//reading.gif" alt="reading.gif" style="width: 500px; height: 500px;">
                         </div>
                         """
-                    pdf_link = get_pdf_url(url)
+                    pdf_link = get_pdf_url("https://www.finn.no/realestate/homes/ad.html?finnkode=321194324")
                     st.session_state.pdf_link = pdf_link
                     if pdf_link:
                         
