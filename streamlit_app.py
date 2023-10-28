@@ -100,16 +100,12 @@ def handle_userinput(user_question):
         st.warning("Please upload a PDF before asking questions.")
 
 
-def get_pdf_url(url):
-    @st.cache_resource
-    def get_driver():
-        return webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
-        
+def get_pdf_url(url):  
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
 
-    driver = get_driver()
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
     
     try:
         driver.get(url)
