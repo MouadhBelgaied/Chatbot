@@ -65,7 +65,7 @@ def get_conversation_chain(vectorstore):
     qa_prompt = ChatPromptTemplate.from_messages(messages)
 
     #llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.8)
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.8, openai_api_key=st.secrets["key"])
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.8, openai_api_key=st.secrets["OPENAI_API_KEY"])
 
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
