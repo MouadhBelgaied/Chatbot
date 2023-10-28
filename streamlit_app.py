@@ -102,7 +102,7 @@ def handle_userinput(user_question):
 def get_pdf_url(url):
     @st.cache_resource
     def get_driver():
-        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        return webdriver.Chrome(service=Service(ChromeDriverManager(version='114.0.5735.90').install()), options=options)
         
     options = Options()
     options.add_argument('--disable-gpu')
