@@ -101,7 +101,7 @@ def handle_userinput(user_question):
 
 
 def get_pdf_url(url):
-    @st.experimental_memo
+    @st.cache_data
     def get_driver():
         return webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
         
@@ -110,7 +110,7 @@ def get_pdf_url(url):
     options.add_argument('--headless')
 
     driver = get_driver()
-
+    print("your url:",url)
     try:
         driver.get(url)
         wait = WebDriverWait(driver, 30)
