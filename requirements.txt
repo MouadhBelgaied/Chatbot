@@ -4,3 +4,4 @@ webdriver-manager
 PyPDF2
 langchain
 requests
+chromedriver-autoinstaller
