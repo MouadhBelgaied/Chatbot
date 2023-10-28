@@ -64,7 +64,9 @@ def get_conversation_chain(vectorstore):
     ]
     qa_prompt = ChatPromptTemplate.from_messages(messages)
 
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.8)
+    #llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.8)
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.8, openai_api_key=st.secrets["key"])
+
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
 
@@ -174,7 +176,7 @@ gif = """
         </div>
         """
 
-load_dotenv()
+#load_dotenv()
 st.write(css, unsafe_allow_html=True)
 
 if "conversation" not in st.session_state:
