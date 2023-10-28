@@ -100,7 +100,7 @@ def handle_userinput(user_question):
 
 
 def get_pdf_url(url):
-    @st.cache_data
+    @st.experimental_singleton
     def get_driver():
         return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         
