@@ -148,7 +148,7 @@ def get_pdf_url(url):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
     finally:
-        driver.quit()  # Make sure to quit the driver to close the browser
+        driver.quit()
 
 def get_pdf_text_from_url(pdf_url):
     response = requests.get(pdf_url)
