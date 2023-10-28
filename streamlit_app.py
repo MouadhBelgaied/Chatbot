@@ -110,7 +110,7 @@ def get_pdf_url(url):
     options.add_argument('--headless')
 
     driver = get_driver()
-    print("your url:",url)
+    
     try:
         driver.get(url)
         wait = WebDriverWait(driver, 30)
