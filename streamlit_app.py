@@ -101,11 +101,8 @@ def handle_userinput(user_question):
 
 
 def get_pdf_url(url):  
-    options = Options()
-    options.add_argument('--disable-gpu')
-    options.add_argument('--headless')
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
     
     try:
         driver.get(url)
