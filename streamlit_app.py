@@ -108,6 +108,7 @@ def get_pdf_url(url):
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
     driver = get_driver()
 
