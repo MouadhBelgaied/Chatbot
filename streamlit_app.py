@@ -98,11 +98,12 @@ def handle_userinput(user_question):
     else:
         st.warning("Please upload a PDF before asking questions.")
 
-@st.experimental_memo
-    def get_driver():
-        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def get_pdf_url(url):
+    @st.experimental_memo
+    def get_driver():
+        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
